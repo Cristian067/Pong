@@ -1,7 +1,9 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Selection : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class Selection : MonoBehaviour
     [SerializeField] private string[] selectionName;
 
     [SerializeField] private TextMeshProUGUI displaySelectionName;
+
+    [SerializeField] private RawImage displayImage;
+
+    [SerializeField] private Texture[] acs;
 
 
     // Start is called before the first frame update
@@ -34,6 +40,9 @@ public class Selection : MonoBehaviour
             selection = 0;
         }
         displaySelectionName.text = selectionName[selection];
+
+        displayImage.texture = acs[selection];
+
         
     }
     public void PrevSelect()
@@ -44,6 +53,8 @@ public class Selection : MonoBehaviour
             selection = selectionName.Length -1;
         }
         displaySelectionName.text = selectionName[selection];
+
+        displayImage.texture = acs[selection];
     }
 
 }
