@@ -7,16 +7,17 @@ using UnityEngine.UI;
 
 public class Selection : MonoBehaviour
 {
-
-    [SerializeField] private int selection;
+    [SerializeField] private bool onlyColor;
+    public int selection;
 
     [SerializeField] private string[] selectionName;
-
     [SerializeField] private TextMeshProUGUI displaySelectionName;
-
     [SerializeField] private RawImage displayImage;
 
     [SerializeField] private Texture[] acs;
+    [SerializeField] private Color[] color;
+
+
 
 
     // Start is called before the first frame update
@@ -41,7 +42,12 @@ public class Selection : MonoBehaviour
         }
         displaySelectionName.text = selectionName[selection];
 
-        displayImage.texture = acs[selection];
+        if (!onlyColor)
+        {
+            displayImage.texture = acs[selection];
+        }
+        
+        displayImage.color = color[selection];
 
         
     }
@@ -54,7 +60,11 @@ public class Selection : MonoBehaviour
         }
         displaySelectionName.text = selectionName[selection];
 
-        displayImage.texture = acs[selection];
+        if (!onlyColor)
+        {
+            displayImage.texture = acs[selection];
+        }
+        displayImage.color = color[selection];
     }
 
 }
