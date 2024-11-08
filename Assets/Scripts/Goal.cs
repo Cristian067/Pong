@@ -17,11 +17,16 @@ public class Goal : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-     if (collision.gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "Ball")
         {
             GameManager.Instance.Score(goal);
-        }   
+            Destroy(collision.gameObject);
+            Debug.Log("Goal");
+            GameManager.Instance.SpawnBall();
+        }
+        
     }
+
 }

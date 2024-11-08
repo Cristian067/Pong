@@ -5544,7 +5544,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1178840631}
         m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
-        m_MethodName: SetPlayer1Acs
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

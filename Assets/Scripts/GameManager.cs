@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private (int, int) points;
 
+    [SerializeField] private GameObject ball;
 
     private void Awake()
     {
@@ -88,6 +89,11 @@ public class GameManager : MonoBehaviour
             }
             Debug.Log("Fin del juego");
         }
+    }
+
+    public void SpawnBall()
+    {
+        Instantiate(ball, new Vector3(0, 0, 0), Quaternion.identity);
     }
     
 }
