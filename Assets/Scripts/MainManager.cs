@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +23,8 @@ public class MainManager : MonoBehaviour
 
 
     [SerializeField] private GameObject[] panels;
+
+    [SerializeField] private TextMeshProUGUI pointToGoalText;
 
 
     private void Awake()
@@ -101,6 +105,17 @@ public class MainManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ChangeTextToValues(float pointsToGoal)
+    {
+        pointToGoalText.text = pointsToGoal.ToString();
+    }
+
+    public void SetSettings()
+    {
+        //Debug.Log(int.Parse(pointToGoalText.text));
+        PlayerPrefs.SetInt("ScoreToWin", int.Parse(pointToGoalText.text));
     }
 
 }

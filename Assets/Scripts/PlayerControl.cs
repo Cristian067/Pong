@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private bool player1;
 
-    private float speed = 5;
+    [SerializeField] private float speed = 5;
 
     private Rigidbody2D rb;
 

@@ -8,7 +8,7 @@ public class BallV2 : MonoBehaviour
     private Rigidbody2D rb;
 
     private float speed = 4;
-    private float more = 1.3f;
+    private float more = 1.2f;
 
     private bool up;
     private bool right;
@@ -35,7 +35,11 @@ public class BallV2 : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.velocity *= more;
+        if (collision.gameObject.tag == "Player")
+        {
+            rb.velocity *= more;
+        }
+        
     }
     
     private void GoGoBall()

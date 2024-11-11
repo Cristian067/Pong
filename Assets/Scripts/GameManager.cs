@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpriteRenderer colorPlayer2;
 
     private (int, int) points;
+
+    private string winner;
+
+    [SerializeField] private int pointsToArchive;
 
     [SerializeField] private GameObject ball;
 
@@ -77,16 +82,21 @@ public class GameManager : MonoBehaviour
         {
             points.Item1++;
         }
-        if (points.Item1 >= 10 | points.Item2 >= 10)
+        Debug.Log(points);
+        UIManager.Instance.VisualPoints(points);
+        if (points.Item1 >= pointsToArchive | points.Item2 >= pointsToArchive)
         {
             if (points.Item1 > points.Item2)
             {
+                winner = player1Name;
                 Debug.Log($"Gana {player1Name}");
             }
             else if (points.Item1 < points.Item2)
             {
+                winner = player2Name;
                 Debug.Log($"Gana {player2Name}");
             }
+            UIManager.Instance.EndGame(winner);
             Debug.Log("Fin del juego");
         }
     }
@@ -96,4 +106,15 @@ public class GameManager : MonoBehaviour
         Instantiate(ball, new Vector3(0, 0, 0), Quaternion.identity);
     }
     
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+    public void Again()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
+
 }
