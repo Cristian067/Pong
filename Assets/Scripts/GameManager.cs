@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         SetPlayer1();
         SetPlayer2();
+        pointsToArchive = PlayerPrefs.GetInt("ScoreToWin");
     }
 
     // Update is called once per frame
